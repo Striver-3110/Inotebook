@@ -2,6 +2,7 @@ const connectToMongo = require("./db.js");
 const express = require("express");
 const app = express();
 const authRouter = require("./routes/auth.js");
+const noteRouter = require("./routes/notes.js");
 
 const port = 3001;
 // const router = require('./routes/auth.js')
@@ -32,8 +33,8 @@ app.use(express.json()); // this is middle ware to use req.body (i.e. go to note
 // ** correct way
 
 app.use("/api/auth", authRouter);
-// notes.use("/api/notes/", require("./routes/notes"));
+app.use("/api/notes", noteRouter);
 
 app.listen(port, () => {
-  console.log(`app listning at localhost:${port}`);
+  console.log(`app listening at localhost:${port}`);
 });
